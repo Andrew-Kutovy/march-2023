@@ -194,6 +194,8 @@ switch (input) {
         break;
     case 7:
         console.log('Sunday');
+    default:
+        console.log('Please enter a number from 1 to 7')
 }
 
 /*   - Користувач вводить або має два числа. Потрібно знайти та вивести максимальне число з тих двох .
