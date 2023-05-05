@@ -214,12 +214,13 @@ if (number1 > number2) {
 (хибноподібні, тобто приводиться до false)  */
 let xx = 'j2'-23;
 
-if (xx === '' || xx === 0 || xx === -0 || isNaN(xx) || xx === null || typeof xx === undefined
+if (xx === '' || xx === 0 || xx === -0 || isNaN(xx) || xx === null || xx === undefined
     || xx === false) xx = 'default'
 
 console.log(xx)
 
-/* з файлу arrays.js (лежить в папці 2023 plan ) взяти масив coursesAndDurationArray. За допомоги іф перевірити кожен
+/* з файлу arr
+ays.js (лежить в папці 2023 plan ) взяти масив coursesAndDurationArray. За допомоги іф перевірити кожен
  його елемент на тривалість навчання. У випадку якщо тривалість довша за 5 місяців вивести в консоль "Супер". */
 let coursesAndDurationArray = [
     {title: 'JavaScript Complex', monthDuration: 5},
