@@ -202,7 +202,7 @@ for (let i=0; i<100; i++){
 // стоврити масив книжок (назва, кількість сторінок, автори , жанри).
 let books = [
     {
-        name: 'book1',
+        name: 'book first',
         pages: 404,
         authors: [{
             name: 'Author1',
@@ -211,18 +211,15 @@ let books = [
             name: 'Author2',
             age: 43
         }],
-        ganre: 'some ganre'
+        ganre: ['some ganre', "some ganre2"]
     },{
-        name: 'book22',
+        name: 'book second',
         pages: 404,
         authors: [{
             name: 'Author1',
             age: 54
-        }, {
-            name: 'Author2',
-            age: 43
         }],
-        ganre: 'some ganre'
+        ganre: ['some ganre']
     },{
         name: 'book3',
         pages: 304,
@@ -233,31 +230,69 @@ let books = [
             name: 'Author2',
             age: 83
         }],
-        ganre: 'some ganre'
+        ganre: ['some ganre']
     },{
-        name: 'book4',
+        name: 'book name',
         pages: 94,
         authors: [{
             name: 'Author1',
             age: 54
-        }, {
-            name: 'Author2',
-            age: 43
         }],
-        ganre: ['some ganre','some ganre2']
+        ganre: ['some ganre','some ganre2', 'some ganre3']
     },
 ]
 
 // -знайти наібльшу книжку.
-
+let str = ''
+let gross = 0
+for (let el in books){
+    if (books[el].pages > gross){
+        gross = books[el].pages
+        str = `the largest book is ${books[el].name} have ${gross} pages`
+    }
+}
+console.log(str)
 
 // - знайти книжку/ки з найбільшою кількістю жанрів
-
+str = ''
+gross = 0
+for (let el in books){
+    if (books[el].ganre.length > gross){
+        gross = books[el].ganre.length
+        str = `the book with more amount ganres is ${books[el].name}, have ${gross} ganres`
+    }
+}
+console.log(str)
 
 // - знайти книжку/ки з найдовшою назвою
-
+str = ''
+gross = 0
+for (let el in books){
+    if (books[el].name.length > gross){
+        gross = books[el].name.length
+        str = `the book with most lange name is ${books[el].name}`
+    }
+}
+console.log(str)
 
 // - знайти книжку/ки які писали 2 автори
-
+str = ''
+gross = ''
+for (let el in books){
+    if(books[el].authors.length === 2)
+        gross += `${books[el].name} / `
+    str = `the books with two authors: ${gross}`
+    // }
+}
+console.log(str)
 
 // - знайти книжку/ки які писав 1 автор
+str = ''
+gross = ''
+for (let el in books){
+    if(books[el].authors.length === 1)
+        gross += `${books[el].name} / `
+    str = `the books with one author: ${gross}`
+    // }
+}
+console.log(str)
