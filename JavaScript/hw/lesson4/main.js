@@ -2,23 +2,22 @@
 function triangle(a, b) {
     let result;
     const y = Math.PI / 2
-    return result = a * b * Math.sin(y) / 2
+    result = a * b * Math.sin(y) / 2
+    return result
 }
 
 //- створити функцію яка обчислює та повертає площу кола з радіусом r
-
 function cyrcle(r) {
-    let result;
-    result = Math.PI * r**2
-    return +result.toFixed(2)
+    let pre = Math.PI * r**2
+    let result = +pre.toFixed(2)
+    return result
 }
 
 //- створити функцію яка обчислює та повертає площу циліндру висотою h, та радіутом r
-
 function cylinder(h, r){
-    let result;
-    result = 2*Math.PI*r*h + 2*Math.PI*r**2
-    return +result.toFixed(2)
+    let pre = 2*Math.PI*r*h + 2*Math.PI*r**2
+    let result = +pre.toFixed(2)
+    return result
 }
 
 //- створити функцію яка приймає масив та виводить кожен його елемент
@@ -62,24 +61,37 @@ function write(array) {
 }
 
 //- створити функцію яка повертає найменьше число з масиву
-
-
-
-
-
-
+function minimum(arr) {
+    let min = 0;
+    for (let el of arr) if (el < min) min = el
+    return min
+}
 
 /*- створити функцію sum(arr)яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад
  sum([1,2,10]) //->13  */
 function sum(arr) {
     let result =0;
     for (let elem of arr) result += elem
-    return result
+    console.log(result)
 }
+sum([1,2,10])
 
 /*- створити функцію swap(arr,index1,index2). Функція міняє місцями заняення у відаовідних індексах
 Приклад  swap([11,22,33,44],0,1) //=> [22,11,33,44] */
-
+function swap(arr, a, b) {
+    let newArr = []
+    for (let i = 0; i < arr.length; i++) newArr[i] = i === a? arr[b]: i === b? arr[a]: arr[i]
+    console.log(newArr)
+}
+swap([11,22,33,44],0,1)
 
 /*- Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
 Приклад exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD') // => 250   */
+function exchange(sumUAH,currencyValues,exchangeCurrency) {
+    let value;
+    for (let i = 0 ; i<currencyValues.length; i++){
+        if (exchangeCurrency === currencyValues[i].currency) value = +currencyValues[i].value
+    }
+    console.log(sumUAH/value)
+}
+exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD')
