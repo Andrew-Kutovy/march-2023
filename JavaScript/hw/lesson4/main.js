@@ -33,15 +33,17 @@ function paragraf(text) {
 //- створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий
 function ul(text) {
     document.write(`<ul>`)
-        for (let i=0; i <3; i++) document.write(`<li>${text}</li>`)
+        document.write(`<li>${text}</li>`)
+        document.write(`<li>${text}</li>`)
+        document.write(`<li>${text}</li>`)
     document.write(`</ul>`)
 }
 
 /*- створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий. Кількість li
 визначається другим аргументом, який є числовим (тут використовувати цикл) */
-function multyUl(text, num) {
+function multyUl(text, amount) {
     document.write(`<ul>`)
-        for (let i=0; i <num; i++) document.write(`<li>${text}</li>`)
+        for (let i=0; i <amount; i++) document.write(`<li>${text}</li>`)
     document.write(`</ul>`)
 }
 
@@ -56,13 +58,13 @@ function list(arr) {
  об'єкту окремий блок. */
 function write(array) {
     for (let user in array){
-        document.write(`<div>${array[user].id} - ${array[user].name} - ${array[user].age}<hr></div>`)
+        document.write(`<div># ${array[user].id} - name: ${array[user].name} , age: ${array[user].age}<hr></div>`)
     }
 }
 
 //- створити функцію яка повертає найменьше число з масиву
 function minimum(arr) {
-    let min = 0;
+    let min = 9999;
     for (let el of arr) if (el < min) min = el
     return min
 }
@@ -72,18 +74,17 @@ function minimum(arr) {
 function sum(arr) {
     let result =0;
     for (let elem of arr) result += elem
-    console.log(result)
+    return result
 }
-sum([1,2,10])
 
 /*- створити функцію swap(arr,index1,index2). Функція міняє місцями заняення у відаовідних індексах
 Приклад  swap([11,22,33,44],0,1) //=> [22,11,33,44] */
 function swap(arr, a, b) {
     let newArr = []
     for (let i = 0; i < arr.length; i++) newArr[i] = i === a? arr[b]: i === b? arr[a]: arr[i]
-    console.log(newArr)
+    arr = newArr
+    console.log(arr)
 }
-swap([11,22,33,44],0,1)
 
 /*- Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
 Приклад exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD') // => 250   */
@@ -91,7 +92,5 @@ function exchange(sumUAH,currencyValues,exchangeCurrency) {
     let value;
     for (let i = 0 ; i<currencyValues.length; i++){
         if (exchangeCurrency === currencyValues[i].currency) value = +currencyValues[i].value
-    }
-    console.log(sumUAH/value)
+    } console.log(sumUAH/value)
 }
-exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD')

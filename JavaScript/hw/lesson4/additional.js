@@ -34,14 +34,12 @@ function minMax(...arg) {
 }
 
 // - створити функцію яка заповнює масив рандомними числами
-// (цей код генерує рандомні числа в діапазоні від 0 до 100 - Math.round(Math.random()*100)) та виводить його.
 function randomArray(amount) {
     let array = []
     while (array.length < amount) {
         let random = Math.floor(Math.random() * 100);
         array.push(random)
-    }
-    return (array)
+    } return (array)
 }
 
 // - створити функцію яка заповнює масив рандомними числами в діапазоні від 0 до limit. limit - аргумент, який
@@ -51,8 +49,7 @@ function randomLimitArray(amount, limit) {
     while (array.length < amount) {
         let random = Math.floor(Math.random() * limit);
         array.push(random)
-    }
-    return (array)
+    } return array
 }
 
 // - Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].
