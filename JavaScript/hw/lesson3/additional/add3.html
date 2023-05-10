@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <style>
+    .wrap {
+      display: grid;
+      grid-template-columns: 20% 20% 20% 20% 20% ;
+    }
+    .post-card{
+      padding: 5px;
+    }
+
+  </style>
 </head>
 <body>
 <!--template 1.1
@@ -632,7 +642,6 @@
 document.write('<div class="wrap">')
 for (let user of arr){
   document.write(`
-
            <div class="post-card">
            <h3>${user.id} - ${user.title}</h3>
      <p>${user.body}</p>
