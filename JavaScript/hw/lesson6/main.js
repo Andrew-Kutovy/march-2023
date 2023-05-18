@@ -1,7 +1,6 @@
 // - Знайти та вивести довижину настипних стрінгових значень
 let [str, str1, str2] = ['hello world', 'lorem ipsum', 'javascript is cool'];
-console.log(str.split(' ').join('').length, str1.split(' ').join('').length,
-            str2.split(' ').join('').length);
+console.log(str.length, str1.length, str2.length);
 
 // - Перевести до великого регістру наступні стрінгові значення
 // 'hello world', 'lorem ipsum', 'javascript is cool'
@@ -51,7 +50,11 @@ coursesAndDurationArray.sort((a, b) => b.monthDuration - a.monthDuration)
 coursesAndDurationArray.filter(elem => elem.monthDuration > 5)
 
 // -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
-coursesAndDurationArray.map((el, index) => el.id = index);
+coursesAndDurationArray.map((el, index) => {
+    el.id = index
+    return el
+});
+console.log(coursesAndDurationArray)
 
 // =========================
 //описати колоду карт (від 6 до туза без джокерів)// {
