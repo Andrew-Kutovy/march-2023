@@ -17,16 +17,13 @@ str2 = str2.toLowerCase();
 
 // - Є "брудна" стрінга let str = ' dirty string   ' . Почистити її від зайвих пробілів.
 str = ' dirty string   '
-str = str.trim()
+str = str.split(' ').filter(word => word !== '').join(' ');
 
 // - Напишіть функцію stringToarray(str), яка перетворює рядок на масив слів.
-str = 'Ревуть воли як ясла повні';
 let stringToarray = str => str.split(' ')
-let arr = stringToarray(str);
 
 // - є масив чисел [10,8,-7,55,987,-1011,0,1050,0] . за допомоги map  перетворити всі об'єкти в масиві на стрінгові.
 arr = [10,8,-7,55,987,-1011,0,1050,0]
-
 arr = arr.map(el=>String(el))
 
 // - створити функцію sortNums(direction), яка прймає масив чисел, та сортує його від більшого до меньшого, або навпаки
@@ -48,14 +45,13 @@ let coursesAndDurationArray = [
     {title: 'Frontend', monthDuration: 4}
 ];
 // -- відсортувати його за спаданням за monthDuration
-let durat = (a, b) => b.monthDuration - a.monthDuration;
-coursesAndDurationArray.sort(durat)
+coursesAndDurationArray.sort((a, b) => b.monthDuration - a.monthDuration)
 
 // -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
 coursesAndDurationArray.filter(elem => elem.monthDuration > 5)
 
 // -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
-coursesAndDurationArray.map((el, id) => el.id = id);
+coursesAndDurationArray.map((el, index) => el.id = index);
 
 // =========================
 //описати колоду карт (від 6 до туза без джокерів)// {
@@ -74,10 +70,10 @@ function initializeDeck() {
         for (let value of deck.values) {
             color = (suit === 'spade' || suit === 'clubs')? 'black': 'red'
             cards.push({value: value, suit: suit, color: color});
-        }
-    }
-};
+        }}};
 initializeDeck();
+console.log(cards)
+
 //// - знайти піковий туз
 let desiredCard = cards.filter(card => card.suit === 'clubs' && card.value === 'Ace')
 
