@@ -1,37 +1,35 @@
 // - Знайти та вивести довижину настипних стрінгових значень
-let [str, str1, str2] = ['hello world', 'lorem ipsum', 'javascript is cool'];
-console.log(str.length, str1.length, str2.length);
+['hello world', 'lorem ipsum', 'javascript is cool'].map(el => console.log(el.length));
+
 
 // - Перевести до великого регістру наступні стрінгові значення
 // 'hello world', 'lorem ipsum', 'javascript is cool'
-str = str.toUpperCase();
-str1 = str1.toUpperCase();
-str2 = str2.toUpperCase();
+let strings = ['hello world', 'lorem ipsum', 'javascript is cool'].map(el => el.toUpperCase())
+console.log(strings)
 
 // - Перевести до нижнього регістру настипні стрінгові значення
 // 'HELLO WORLD', 'LOREM IPSUM', 'JAVASCRIPT IS COOL'
-str = str.toLowerCase();
-str1 = str1.toLowerCase();
-str2 = str2.toLowerCase();
+strings = ['HELLO WORLD', 'LOREM IPSUM', 'JAVASCRIPT IS COOL'].map(el => el.toLowerCase())
+console.log(strings)
 
 // - Є "брудна" стрінга let str = ' dirty string   ' . Почистити її від зайвих пробілів.
-str = ' dirty string   '
+let str = ' dirty string   '
 str = str.split(' ').filter(word => word !== '').join(' ');
 
 // - Напишіть функцію stringToarray(str), яка перетворює рядок на масив слів.
 let stringToarray = str => str.split(' ')
 
 // - є масив чисел [10,8,-7,55,987,-1011,0,1050,0] . за допомоги map  перетворити всі об'єкти в масиві на стрінгові.
-arr = [10,8,-7,55,987,-1011,0,1050,0]
-arr = arr.map(el=>String(el))
+let arr = [10,8,-7,55,987,-1011,0,1050,0].map(el=> el.toString())
+console.log(arr)
 
 // - створити функцію sortNums(direction), яка прймає масив чисел, та сортує його від більшого до меньшого, або навпаки
 // в залежності від значення аргументу direction.
 //     let nums = [11,21,3];
 // sortNums(nums,'ascending') // [3,11,21]
 // sortNums(nums,'descending') // [21,11,3]
-let sortNums = (arr, direction) => { if (direction === 'ascending') return arr.sort((a, b) =>  a - b);
-else if (direction === 'descending') return arr.sort((a, b) =>  b - a);}
+let sortNums = (arr, direction) => (direction === 'ascending')? arr.sort((a, b) =>  a - b): arr.sort((a, b) =>  b - a)
+console.log(sortNums([11,21,3],'ascending'))
 
 // ==========================
 // - є масив
@@ -50,11 +48,8 @@ coursesAndDurationArray.sort((a, b) => b.monthDuration - a.monthDuration)
 coursesAndDurationArray.filter(elem => elem.monthDuration > 5)
 
 // -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
-coursesAndDurationArray.map((el, index) => {
-    el.id = index
-    return el
-});
-console.log(coursesAndDurationArray)
+let newArrWithId = coursesAndDurationArray.map((el, index) => ({ id: index+1, ...el}))
+console.log(newArrWithId)
 
 // =========================
 //описати колоду карт (від 6 до туза без джокерів)// {
@@ -91,7 +86,9 @@ let redCards = cards.filter(card => card.color === 'red')
 let diamonds = cards.filter(card => card.suit === 'diamond');
 
 // - всі трефи від 9 та більше
-let clubCards = cards.filter(card => card.suit === 'clubs' && card.value !== '6'&& card.value !== '7'&& card.value !== '8')
+let clubCards = cards.filter(card => card.suit === 'clubs' && card.value !== '6' && card.value !== '7' && card.value !== '8')
+//or - card.suit === 'clubs' && card.value !== '6' && card.value !== '7' && card.value !== '8'
+//or - ['9','10','Ace','Jack','Queen','King'].includes(card.value) && card.suit === 'clubs'
 
 // =========================
 //     Взяти описану колоду карт, та за допомоги reduce упакувати всі карти по "мастях" в об'єкт
@@ -101,14 +98,20 @@ let clubCards = cards.filter(card => card.suit === 'clubs' && card.value !== '6'
 //     hearts:[],
 //     clubs:[]
 // }
-const deckBySuits = cards.reduce((result, card) => {
-    const { suit } = card;
-    if (!result[suit]) {
-        result[suit] = [];
-    }
-    result[suit].push(card);
-    return result;
-}, {});
+const deckBySuits = cards.reduce((acc, cu) => {
+    acc[cu.suit].push(cu);
+    return acc;
+}, {spade:[], diamond:[], heart:[], clubs:[]});
+
+// const deckBySuits =  cards.reduce((result, card) => {
+//                      const { suit } = card;
+//                      if (!result[suit]) result[suit] = [];
+//                      result[suit].push(card);
+//                      return result;
+//                  }, {});
+
+
+
 console.log(deckBySuits);
 
 // =========================
