@@ -104,13 +104,11 @@ const deckBySuits = cards.reduce((acc, cu) => {
 }, {spade:[], diamond:[], heart:[], clubs:[]});
 
 // const deckBySuits =  cards.reduce((result, card) => {
-//                      const { suit } = card;
-//                      if (!result[suit]) result[suit] = [];
-//                      result[suit].push(card);
-//                      return result;
-//                  }, {});
-
-
+//      const { suit } = card;
+//      if (!result[suit]) result[suit] = [];
+//      result[suit].push(card);
+//      return result;
+//  }, {});
 
 console.log(deckBySuits);
 
