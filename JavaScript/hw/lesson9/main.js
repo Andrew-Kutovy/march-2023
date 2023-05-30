@@ -8,18 +8,17 @@ div.classList.add('alpha')
 div.classList.add('beta')
 
 // - додати стилі(довільні значення) : колір фону, колір тексту, розмір тексту
-div.textContent = 'Fucked Up Beyond All Recognition'
+div.innerText = 'Fucked Up Beyond All Recognition'
 div.style.backgroundColor = 'cyan';
 div.style.color = 'red';
 div.style.fontSize = '45px';
 
 // - додати цей блок в body.
-let body = document.querySelector('body');
-body.appendChild(div);
+document.body.appendChild(div);
 
 // - клонувати його повністю, та додати клон в body.
 let clone = div.cloneNode(true)
-body.appendChild(clone)
+document.body.appendChild(clone)
 
 // - Є масив:
 let arr = ['Main','Products','About us','Contacts']
@@ -27,10 +26,10 @@ let arr = ['Main','Products','About us','Contacts']
 let ul = document.createElement('ul')
 for (let el of arr){
     let li = document.createElement('li')
-    li.textContent = el
+    li.innerText = el
     ul.appendChild(li)
 }
-body.appendChild(ul)
+document.body.appendChild(ul)
 
 // - Є масив
 let coursesAndDurationArray = [
@@ -44,8 +43,8 @@ let coursesAndDurationArray = [
 // Для кожного елементу масиву зробити блок в якому вивести інформацію про title та monthDuration
 for (let el of coursesAndDurationArray){
         let div = document.createElement('div')
-        div.textContent = `title: ${el['title']}, month duration: ${el['monthDuration']}`
-        body.appendChild(div)
+        div.innerText = `title: ${el['title']}, month duration: ${el['monthDuration']}`
+        document.body.appendChild(div)
 }
 
 // =========================
@@ -58,15 +57,14 @@ for (let el of coursesAndDurationArray){
 
     let h1 = document.createElement('h1')
     h1.classList.add('heading');
-    h1.textContent = el['title']
-    div.appendChild(h1)
+    h1.innerText = el['title']
 
     let p = document.createElement('p')
     p.classList.add('description');
-    p.textContent = el['monthDuration']
-    div.appendChild(p)
+    p.innerText = el['monthDuration']
 
-    body.appendChild(div)
+    div.append(h1, p)
+    document.body.appendChild(div)
 }
 
 // ==========================
@@ -115,22 +113,19 @@ for (let simpson of simpsons){
     member.classList.add('member')
 
     let name = document.createElement('h2')
-    name.textContent = simpson['name'] +' '+ simpson['surname']
-    member.appendChild(name)
+    name.innerText = `${simpson['name']} ${simpson['surname']}`
 
     let age = document.createElement('h3')
-    age.textContent = 'age: ' + simpson['age']
-    member.appendChild(age)
+    age.innerText = 'age: ' + simpson['age']
 
     let info = document.createElement('p')
-    info.textContent = simpson['info']
-    member.appendChild(info)
+    info.innerText = simpson['info']
 
     let photo = document.createElement('img')
     photo.src = simpson['photo']
-    member.appendChild(photo)
 
-    body.appendChild(member)
+    member.append(name, age, info, photo)
+    document.body.appendChild(member)
 }
 
 // =========================
@@ -212,26 +207,23 @@ for (let el of coursesArray){
     let div = document.createElement('div')
 
     let title = document.createElement('h1')
-    title.textContent = el['title']
-    div.appendChild(title)
+    title.innerText = el['title']
 
     let months = document.createElement('span')
-    months.textContent = 'month duration: '+ el["monthDuration"]
-    div.appendChild(months)
+    months.innerText = `month duration:  ${el["monthDuration"]}`
     months.style.paddingRight = '40px'
+
     let hours = document.createElement('span')
-    hours.textContent = 'hours duration: '+ el["hourDuration"]
-    div.appendChild(hours)
+    hours.innerText = 'hours duration: '+ el["hourDuration"]
 
     let ul = document.createElement('ul')
     for (let mod of el['modules']){
         let li = document.createElement('li')
-        li.textContent = mod
+        li.innerText = mod
         ul.appendChild(li)
     }
-    div.appendChild(ul)
-
-    body.appendChild(div)
+    div.append(title, months, hours, ul)
+    document.body.appendChild(div)
 }
 
 // ------------------
@@ -239,13 +231,12 @@ for (let el of coursesArray){
 //     натисканні на кнопку зникав елемент з id="text".
 let text = document.createElement('p')
 text.id = 'text'
-text.textContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consectetur, cumque deserunt'
-body.appendChild(text)
+text.innerText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consectetur, cumque deserunt'
 
 let button = document.createElement('input')
 button.type = 'submit'
 button.value = 'hide message'
-body.appendChild(button)
+document.body.append(text, button)
 
 button.addEventListener('click', () => {text.classList.toggle('hide')
     button.value = text.classList.contains('hide') === true? 'show massage': 'hide massage'
@@ -256,11 +247,9 @@ button.addEventListener('click', () => {text.classList.toggle('hide')
 let but = document.createElement('input')
 but.type = 'submit'
 let textt = document.createElement('p')
-textt.textContent = 'Enter your age and push button'
+textt.innerText = 'Enter your age and push button'
 let input = document.createElement('input')
 
-body.appendChild(textt)
-body.appendChild(input)
-body.appendChild(but)
+document.body.append(textt, input, but)
 
-but.addEventListener('focus', ()=> +input.value >= 18? textt.textContent = 'access allow': textt.textContent = 'access denied'  )
+but.addEventListener('focus', ()=> textt.textContent = +input.value >= 18? 'access allow': 'access denied'  )

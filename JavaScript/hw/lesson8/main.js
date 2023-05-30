@@ -82,20 +82,8 @@ function CarFun(model, made, year, maxSpeed, value) {
     this.year = year;
     this.maxSpeed = maxSpeed;
     this.value = value;
-
-    function drive() {
-        console.log(`їдемо зі швидкістю ${this.maxSpeed} на годину`)
-    }
-    function info() {
-        console.log(`модель - ${this.model}, виробник - ${this.made}, рік випуску - ${this.year},
-            максимальна швидкість - ${this.maxSpeed}, об'єм двигуна - ${this.value}`)
-    }
-    function increaseMaxSpeed (newSpeed){
-
-    }
 }
 let ferrari = new CarFun('testarossa', 'Italy', 1980, 320, 800)
-
 
 // -- drive () - яка виводить в консоль `їдемо зі швидкістю ${максимальна швидкість} на годину`
 CarFun.prototype.kmh = function () {
