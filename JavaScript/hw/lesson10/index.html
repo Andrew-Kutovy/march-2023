@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .user {
+            display: flex;
+            flex-direction: column;
+        }
+        .hide{display: none}
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="count"> visit counter: 1</div>
+<div ><span>Ballance:</span><span id="priceBlock">100 </span> <span>&#8372</span></div>
+<p><a href="visits.html">Visit history</a></p>
+<div class="container" id="usersContainer"></div><br>
+<button id="prevButton" onclick="showPreviousUsers()">Prev</button>
+<button id="nextButton" onclick="showNextUsers()">Next</button><br>
+<br>
+<label>row <input type="number" id="rowCountInput"></label><br>
+<label>cell <input type="number" id="cellCountInput"></label><br>
+<label>content  <input type="text" id="cellContentInput"></label><br>
+<button onclick="createTable()">Create table</button>
+<div id="tableContainer"></div><br>
+
+<script src="main.js"></script><br>
+
+</body>
+</html>

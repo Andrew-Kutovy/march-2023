@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visits</title>
+</head>
+<body>
+<h1>Visits page</h1>
+<p><a href="index.html">main page</a></p>
+
+<ul id="visitsList"></ul>
+
+<script >
+    let sessions = localStorage.getItem('sessions');
+    if (sessions) {
+        sessions = JSON.parse(sessions);
+        let visitsList = document.getElementById('visitsList');
+        for (let i = 0; i < sessions.length; i++) {
+            let session = sessions[i];
+            let listItem = document.createElement('li');
+            listItem.textContent = 'Страница: ' + session.page + ', Время посещения: ' + session.timestamp;
+            visitsList.appendChild(listItem);
+        }
+    }
+</script>
+
+</body>
+</html>
