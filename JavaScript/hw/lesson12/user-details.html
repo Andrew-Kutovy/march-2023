@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Деталі користувача</title>
+</head>
+<body>
+<h1>Деталі користувача</h1>
+<ul id="user-details"></ul>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('id');
+
+    function renderUserDetails(user, parentElement) {
+        for (const key in user) {
+            if (user.hasOwnProperty(key)) {
+                const value = user[key];
+                const detailItem = document.createElement('li');
+                detailItem.textContent = `${key}:`;
+
+                if (typeof value === 'object' && value !== null) {
+                    const nestedList = document.createElement('ul');
+                    detailItem.appendChild(nestedList);
+                    renderUserDetails(value, nestedList);
+                } else {
+                    const valueItem = document.createElement('span');
+                    valueItem.textContent = value;
+                    detailItem.appendChild(valueItem);
+                }
+
+                parentElement.appendChild(detailItem);
+            }
+        }
+    }
+
+    fetch(`http://jsonplaceholder.typicode.com/users/${userId}`)
+        .then(response => response.json())
+        .then(user => {
+            const userDetails = document.getElementById('user-details');
+            renderUserDetails(user, userDetails);
+        })
+        .catch(error => console.log(error));
+
+</script>
+</body>
+</html>

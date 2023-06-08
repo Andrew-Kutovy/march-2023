@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>Список користувачів</h1>
+<ul id="user-list"></ul>
+
+<script>
+    //зробити файл users.html
+    // з ендпоінту http://jsonplaceholder.typicode.com/users отримати всіх користувачів
+    // вивести їх id + name списком та додати посилання з href = user-details.html?id=XXX (замість ХХХ - айді юзера)
+    // при кліку на посилання перехід на відповідну сторінку, на якій буде вся інформація про користувача (всі 15 полів)
+    // отримана через додатковий запит (https://jsonplaceholder.typicode.com/users/XXX   ХХХ - айді користувача)
+
+    function getUserDetails(userId) {
+        fetch(`http://jsonplaceholder.typicode.com/users/${userId}`)
+            .then(response => response.json())
+            .then(user => {
+                const userDetails = document.getElementById('user-details');
+                for (const [key, value] of Object.entries(user)) {
+                    const detailItem = document.createElement('li');
+                    detailItem.textContent = `${key}: ${value}`;
+                    userDetails.appendChild(detailItem);
+                }
+            })
+            .catch(error => console.log(error));
+    }
+    function getUsers() {
+        fetch('http://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(data => {
+                const userList = document.getElementById('user-list');
+                data.forEach(user => {
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.href = `user-details.html?id=${user.id}`;
+                    link.textContent = `${user.id} - ${user.name}`;
+                    link.addEventListener('click', (event) => {
+                        const userId = user.id;
+                        getUserDetails(userId);
+                    });
+                    listItem.appendChild(link);
+                    userList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.log(error));
+    }
+    getUsers()
+</script>
+</body>
+</html>
