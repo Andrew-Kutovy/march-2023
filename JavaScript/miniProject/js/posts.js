@@ -19,9 +19,11 @@ function showComments() {
                 let div = document.createElement('div')
                 commetsBlock.appendChild(div)
                 for (let key in comment){
-                    let el = document.createElement('p')
-                    div.appendChild(el)
-                    if (key === 'name' || key === 'email' || key === 'body') el.textContent = `${key}: ${comment[key]}`
+                    if (key === 'name' || key === 'email' || key === 'body') {
+                        let el = document.createElement('p')
+                        div.appendChild(el)
+                        el.textContent = `${key}: ${comment[key]}`
+                    }
                 }
             }
         })
