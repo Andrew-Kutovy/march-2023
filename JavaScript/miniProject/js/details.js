@@ -1,5 +1,6 @@
 let userId = new URL(location.href).searchParams.get('userId');
 let block = document.getElementsByClassName('wrap')[0];
+let content = document.getElementsByClassName('content')[0]
 let postTitleList = null;
 fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
     .then(res => res.json())
@@ -9,11 +10,12 @@ fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
         let but = document.createElement('button');
         but.innerText = 'posts of current user';
         but.classList.add('show-posts')
-        block.append(ul, but);
+        block.appendChild(ul);
+        content.appendChild(but)
 
         but.addEventListener('click', function togglePosts() {
             if (postTitleList) {
-                block.removeChild(postTitleList);
+                content.removeChild(postTitleList);
                 postTitleList = null;
             } else postable();
         });
@@ -42,12 +44,12 @@ function postable() {
         .then(posts => {
             postTitleList = document.createElement('div');
             postTitleList.classList.add('posts-list')
-            block.appendChild(postTitleList);
+            content.appendChild(postTitleList);
 
             for (let post of posts) {
                 let postId = post.id;
                 let postBlock = document.createElement('div');
-                let title = document.createElement('p')
+                let title = document.createElement('span')
                 let but = document.createElement('button');
                 postBlock.classList.add('post-block')
                 postTitleList.appendChild(postBlock);

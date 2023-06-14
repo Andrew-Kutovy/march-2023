@@ -1,7 +1,28 @@
-h2 { /* н2 и а для установки заголовка и ссылки на главную по разные стороны странцы*/
-    display: inline;
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Tilt+Prism&display=swap');
+@keyframes cool {
+    0%{background-position: 0 50%;}
+    50%{background-position: 100% 50%;}
+    100%{background-position: 0 50%;}
+}
+html, body{
+    height: 100%;
+}
+body{
+    margin: 0;
+    background: linear-gradient(45deg, #e8cbc0, #636fa4);
+    background-size: 400% 400%;
+    animation: cool 30s ease infinite;
+    font-family: 'Carter One', serif;
+    font-size: 18px;
+}
+
+h1, h2{
+    text-align: center;
+    font-family: 'Tilt Prism', serif ;
 }
 a{
+    font-size: 20px;
+    margin: 0 20px;
     float: right;
 }
 
@@ -11,47 +32,49 @@ a{
     justify-content: center;
     margin: 0 auto;
 }
-
-.users {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.user{ /*index.html - всі блоки з user - по 2 в рядок. кнопки/аосилвння розташувати під інформацією про user */
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    border: 1px solid grey;
-    width: 40vw;
-    font-size: 25px;
+button:hover{
+    background: linear-gradient(180deg, #bdc3c7, #596569);
+    box-shadow: 5px 5px 10px #222;
 }
 
-.posts-list{ /* user-details.html - блоки з короткою іфною про post - в ряд по 5 */
+.wrap{ /* основной блок с инфой */
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-direction: column;
+    width: 50vw;
+    border: 1px solid grey;
+    padding: 15px;
+}
+
+.users, .posts-list, .comments { /* блоки блоков */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 10px;
 }
-.post-block{
-    margin: 10px 0;
+.user, .post-block, .comments>div{
     display: flex;
     flex-direction: column;
-    border: 1px solid grey;
-    box-sizing: border-box;
-    width: 17vw;
-    height: 130px;
-}
-.comments{ /* post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 10px;
-}
-.comments>div{
+    justify-content: space-between;
     margin: 10px 0;
-    display: flex;
-    flex-direction: column;
+    padding: 10px;
     border: 1px solid grey;
     box-sizing: border-box;
-    width: 23vw;
+    background: linear-gradient(45deg, #cc95c0, #dbd4b4, #7aa1d2);
+    background-size: 400% 400%;
+    animation: cool 30s ease infinite;
+}
+.user:hover, .post-block:hover{
+    background: linear-gradient(45deg, #556270, #ff6b6b);
+    background-size: 400% 400%;
+    animation: cool 10s ease infinite;
+    box-shadow: 5px 5px 10px #222;
+}
+.user{width: 40vw;} /* ширины блоков */
+.post-block{width: 19vw;}
+.comments>div{width: 24vw;}
+
+.user>span, .post-block>span{
+    display: flex;
+    justify-content: center;
 }
