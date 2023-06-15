@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Tilt+Prism&display=swap');
-@keyframes cool {
-    0%{background-position: 0 50%;}
-    50%{background-position: 100% 50%;}
-    100%{background-position: 0 50%;}
-}
-html, body{
-    height: 100%;
-}
+@keyframes cool {0%{background-position: 0 50%;} 50%{background-position: 100% 50%;} 100%{background-position: 0 50%;}}
+
+html, body{height: 100%}
 body{
     margin: 0;
     background: linear-gradient(45deg, #e8cbc0, #636fa4);
@@ -16,17 +11,20 @@ body{
     font-size: 18px;
 }
 
+header {
+    position: relative;
+}
 h1, h2{
     text-align: center;
     font-family: 'Tilt Prism', serif ;
 }
-a{
-    font-size: 20px;
-    margin: 0 20px;
-    float: right;
+.back-link {
+    position: absolute;
+    top: 20px;
+    right: 30px;
 }
 
-.show-posts { /* кнопка выводящая посты юзера */
+.show-posts {
     width: 90vw;
     display: flex;
     justify-content: center;
@@ -37,17 +35,18 @@ button:hover{
     box-shadow: 5px 5px 10px #222;
 }
 
-.wrap{ /* основной блок с инфой */
+.wrap{
     display: flex;
     justify-content: center;
     margin: 0 auto;
     flex-direction: column;
-    width: 50vw;
+    width: 35vw;
     border: 1px solid grey;
     padding: 15px;
 }
+@media (max-width: 1000px) { .wrap{width: 50vw} }
 
-.users, .posts-list, .comments { /* блоки блоков */
+.users, .posts-list, .comments {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -70,7 +69,7 @@ button:hover{
     animation: cool 10s ease infinite;
     box-shadow: 5px 5px 10px #222;
 }
-.user{width: 40vw;} /* ширины блоков */
+.user{width: 40vw;}
 .post-block{width: 19vw;}
 .comments>div{width: 24vw;}
 
