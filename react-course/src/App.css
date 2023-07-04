@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+.Characters {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Character {
+  margin: 20px;
+}
+
+
